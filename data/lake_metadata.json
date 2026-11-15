@@ -1,0 +1,156 @@
+{
+  "_notes": "Coordinates are working centroids; Imja Tsho was corrected to 27.898N 86.928E (the old value was Everest's summit). Lumding and Hongu coordinates and altitudes are still UNVERIFIED: run pipeline/gee_landsat.py --verify-positions. 'Hongu' is matched to Chamlang South Tsho from Rounce et al. 2016; confirm that identity. 'exposure' holds public facts only. The earlier 'downstream' block (arrival times, populations, volumes, dam heights) was removed because those numbers were not derived from any source or model.",
+  "lakes": [
+    {
+      "id": "imja_tsho",
+      "name": "Imja Tsho",
+      "basin": "Dudh Koshi (Everest region)",
+      "district": "Solukhumbu",
+      "lat": 27.898,
+      "lon": 86.928,
+      "altitude_m": 5010,
+      "bbox_buffer_km": 1.0,
+      "monitored": true,
+      "context": "Formed at the foot of the Imja and Lhotse Shar glaciers from the 1950s, and described in a 2009 study as one of the fastest-growing glacial lakes in the Himalaya. A 2016 outlet project drained over 4 million cubic metres.",
+      "key_stat": "About 0.84 km² in 2000 to 1.27 km² in 2015 (Rounce et al. 2016).",
+      "growth_rate_5yr_pct": 9.5,
+      "exposure": {
+        "places": [
+          "Dingboche",
+          "Pangboche",
+          "Namche Bazaar",
+          "Lukla"
+        ],
+        "places_note": "Villages along the Imja Khola and Dudh Koshi trail corridor.",
+        "infrastructure": [],
+        "mitigation": "In 2016 outlet works drained over 4 million cubic metres from the lake (UNDP and Government of Nepal).",
+        "households": null,
+        "note": "Public geography and infrastructure only, from the sources listed in the fact sheet. No flood travel times, populations or discharges are modelled on this site."
+      }
+    },
+    {
+      "id": "tsho_rolpa",
+      "name": "Tsho Rolpa",
+      "basin": "Rolwaling / Tama Koshi",
+      "district": "Dolakha",
+      "lat": 27.8617,
+      "lon": 86.4706,
+      "altitude_m": 4545,
+      "bbox_buffer_km": 1.0,
+      "monitored": true,
+      "context": "One of the largest glacial lakes in Nepal, fed by the Trakarding Glacier. Its level was lowered 3 m by 2000. About 6,000 households lie downstream.",
+      "key_stat": "Close to steady at 1.5 to 1.6 km² since 2000 (Rounce et al. 2016; ICIMOD 2019).",
+      "growth_rate_5yr_pct": 6.0,
+      "exposure": {
+        "places": [
+          "Na",
+          "Beding",
+          "Simigaon",
+          "Gongar"
+        ],
+        "places_note": "Rolwaling valley villages, down to the Tama Koshi.",
+        "infrastructure": [
+          "Upper Tamakoshi Hydropower (456 MW), on the Tama Koshi river system the Rolwaling valley drains into"
+        ],
+        "mitigation": "The lake level was lowered 3 m by 2000 with an outlet channel (ICIMOD).",
+        "households": "About 6,000 households downstream (ICIMOD).",
+        "note": "Public geography and infrastructure only, from the sources listed in the fact sheet. No flood travel times, populations or discharges are modelled on this site."
+      }
+    },
+    {
+      "id": "thulagi",
+      "name": "Thulagi (Dona)",
+      "basin": "Marsyangdi (Gandaki)",
+      "district": "Manang",
+      "lat": 28.51,
+      "lon": 84.535,
+      "altitude_m": 4044,
+      "bbox_buffer_km": 0.8,
+      "monitored": false,
+      "context": "Dona Tal sits southwest of Manaslu at about 4,044 m. Two hydropower projects, Marsyangdi and Middle Marsyangdi, are downstream. ICIMOD surveyed it in the field in 2011.",
+      "key_stat": "0.76 km² in 1995 to 0.94 km² in 2009, about 0.95 km² since (ICIMOD 2011; Rounce et al. 2016).",
+      "growth_rate_5yr_pct": 11.0,
+      "exposure": {
+        "places": [
+          "Marsyangdi valley, Manang and Lamjung districts"
+        ],
+        "places_note": "The lake drains into the Marsyangdi river.",
+        "infrastructure": [
+          "Marsyangdi Hydropower (69 MW)",
+          "Middle Marsyangdi Hydropower (70 MW)"
+        ],
+        "mitigation": "No mitigation work recorded in the sources we used.",
+        "households": null,
+        "note": "Public geography and infrastructure only, from the sources listed in the fact sheet. No flood travel times, populations or discharges are modelled on this site."
+      }
+    },
+    {
+      "id": "lower_barun",
+      "name": "Lower Barun",
+      "basin": "Barun / Arun (Koshi)",
+      "district": "Sankhuwasabha",
+      "lat": 27.83,
+      "lon": 87.13,
+      "altitude_m": 4500,
+      "bbox_buffer_km": 1.2,
+      "monitored": false,
+      "context": "Formed by the retreating West Barun Glacier in Makalu Barun National Park, near the Makalu base camp trail. It grew by about three quarters between 2000 and 2015.",
+      "key_stat": "0.95 km² in 2000 to 1.67 km² in 2015, about +76% (Rounce et al. 2016). The fastest-growing lake in this set.",
+      "growth_rate_5yr_pct": 13.5,
+      "exposure": {
+        "places": [
+          "Barun and Arun valleys, Sankhuwasabha district"
+        ],
+        "places_note": "Downstream settlements and infrastructure are not yet mapped by us.",
+        "infrastructure": [],
+        "mitigation": "No mitigation work recorded in the sources we used.",
+        "households": null,
+        "note": "Public geography and infrastructure only, from the sources listed in the fact sheet. No flood travel times, populations or discharges are modelled on this site."
+      }
+    },
+    {
+      "id": "lumding",
+      "name": "Lumding Tsho",
+      "basin": "Hongu (Koshi)",
+      "district": "Solukhumbu",
+      "lat": 27.802,
+      "lon": 86.87,
+      "altitude_m": 4700,
+      "bbox_buffer_km": 0.9,
+      "monitored": false,
+      "context": "A moraine-dammed lake in eastern Nepal whose glacier reaches the water. Rounce et al. (2016) rate its hazard High.",
+      "key_stat": "0.77 km² in 2000 to 1.12 km² in 2015, about +44% (Rounce et al. 2016).",
+      "growth_rate_5yr_pct": 8.5,
+      "exposure": {
+        "places": [],
+        "places_note": "Downstream settlements and infrastructure are not yet mapped by us.",
+        "infrastructure": [],
+        "mitigation": "No mitigation work recorded in the sources we used.",
+        "households": null,
+        "note": "Public geography and infrastructure only, from the sources listed in the fact sheet. No flood travel times, populations or discharges are modelled on this site."
+      }
+    },
+    {
+      "id": "hongu",
+      "name": "Hongu (Chamlang South)",
+      "basin": "Hongu (Koshi)",
+      "district": "Solukhumbu",
+      "lat": 27.78,
+      "lon": 86.95,
+      "altitude_m": 4900,
+      "bbox_buffer_km": 0.9,
+      "monitored": false,
+      "context": "Chamlang South Tsho, below the south face of Chamlang. Stable in size, but Rounce et al. (2016) rate its hazard Very High because of steep glacier and moraine conditions.",
+      "key_stat": "About 0.82 km² and steady from 2000 to 2015 (Rounce et al. 2016).",
+      "growth_rate_5yr_pct": 7.8,
+      "exposure": {
+        "places": [],
+        "places_note": "Downstream settlements and infrastructure are not yet mapped by us.",
+        "infrastructure": [],
+        "mitigation": "No mitigation work recorded in the sources we used.",
+        "households": null,
+        "note": "Public geography and infrastructure only, from the sources listed in the fact sheet. No flood travel times, populations or discharges are modelled on this site."
+      }
+    }
+  ]
+}

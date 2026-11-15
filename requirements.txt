@@ -1,0 +1,10 @@
+earthengine-api
+asf_search>=14.1.0
+earthaccess
+h5py
+scipy
+pyproj
+pandas
+numpy
+pillow
+pytest

@@ -1,0 +1,20 @@
+# Cloudflare Worker config. Free plan is enough.
+name = "sar-cosmos-chat"
+main = "chat-worker.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+PROVIDER = "primary"                      # "primary" or "secondary" (see worker/README.md)
+PRIMARY_MODEL = "gemini-2.0-flash"        # check Google AI Studio for the current model name
+SECONDARY_MODEL = "claude-haiku-5-5"
+ALLOWED_ORIGINS = ""                     # e.g. "https://sar-cosmos.netlify.app"  (empty = any site may call it)
+PER_IP_DAILY = "40"
+GLOBAL_DAILY = "1500"
+
+# Optional: daily limits need a KV namespace.  wrangler kv namespace create LIMITS   then paste the id here.
+# [[kv_namespaces]]
+# binding = "LIMITS"
+# id = "PASTE_ID_HERE"
+
+# SECRETS are NOT stored in this file. Set them with:
+#   npx wrangler secret put PRIMARY_API_KEY        (or SECONDARY_API_KEY)

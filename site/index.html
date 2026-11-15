@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAR Cosmos | Watching Nepal's glacial lakes from space</title>
+<meta name="description" content="SAR Cosmos tracks six dangerous Himalayan glacial lakes with optical satellite history and NISAR radar that sees through the monsoon.">
+<meta name="theme-color" content="#060d1c">
+<link rel="icon" type="image/png" href="assets/logo-256.webp">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="fx-vignette" aria-hidden="true"></div>
+<div class="fx-grain" aria-hidden="true"></div>
+<div id="cursor" aria-hidden="true"></div>
+
+<div id="preloader" role="status">
+  <img src="assets/logo-256.webp" width="128" height="128" alt="SAR Cosmos mission patch">
+  <div class="pre-line"><span id="pre-bar"></span></div>
+  <p class="mono">Calibrating radar</p>
+</div>
+
+<header class="nav" id="nav">
+  <button class="brand" id="logo-btn" aria-label="Open the SAR Cosmos mission patch">
+    <img src="assets/logo-256.webp" width="44" height="44" alt="">
+    <span>SAR <i>Cosmos</i></span>
+  </button>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#monsoon">The problem</a>
+    <a href="#lakes">Six lakes</a>
+    <a href="#method">Method</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="btn-ask" id="ask-btn" aria-haspopup="dialog" aria-label="Ask Cosmo"><span class="btn-orb" aria-hidden="true"></span><span class="btn-label">Ask Cosmo</span></button>
+    <div class="seg" id="mode-seg" role="group" aria-label="Sensor view">
+      <button data-mode="optical" class="on">Optical</button>
+      <button data-mode="radar">Radar</button>
+      <span class="seg-thumb"></span>
+    </div>
+  </div>
+</header>
+
+<ol class="rail" id="rail" aria-label="Progress">
+  <li><a href="#hero" aria-label="Start"></a></li>
+  <li><a href="#stakes" aria-label="Stakes"></a></li>
+  <li><a href="#monsoon" aria-label="Monsoon"></a></li>
+  <li><a href="#radar" aria-label="Radar"></a></li>
+  <li><a href="#lakes" aria-label="Six lakes"></a></li>
+  <li><a href="#method" aria-label="Method"></a></li>
+</ol>
+
+<button class="ask-fab" id="ask-fab" aria-label="Ask Cosmo"><span class="btn-orb" aria-hidden="true"></span><span class="btn-label">Ask Cosmo</span></button>
+<div id="tags"></div>
+
+<main>
+
+  <section id="hero" class="sec sec-hero">
+    <div class="wrap">
+      <p class="mono kicker reveal">NASA Space Apps 2026, Bhaktapur. Challenge: Dancing with the SARs</p>
+      <h1 class="display split">Nineteen dangerous lakes still wait for safeguards.</h1>
+      <p class="lead reveal">A 2011 ICIMOD study counted 21 critically dangerous glacial lakes in Nepal and found proper mitigation at only two. SAR Cosmos tracks six dangerous lakes from orbit, through the monsoon, using radar. Two of them have had mitigation work, which gives us a comparison.</p>
+      <div class="cta reveal">
+        <a class="btn btn-solid" href="#lakes">Explore the six lakes</a>
+        <a class="btn btn-ghost" href="#monsoon">Why radar</a>
+      </div>
+    </div>
+    <div class="scroll-hint mono" aria-hidden="true"><span></span>Scroll</div>
+  </section>
+
+  <section id="stakes" class="sec sec-stakes">
+    <div class="wrap">
+      <h2 class="h2 split">A flood that starts at 5,000 metres ends in someone's village.</h2>
+      <div class="stats">
+        <article class="stat tilt reveal"><div class="stat-n"><span class="count" data-to="21">0</span></div><p>lakes officially classed critically dangerous</p></article>
+        <article class="stat tilt reveal"><div class="stat-n"><span class="count" data-to="2">0</span></div><p>of those have had proper mitigation work</p></article>
+        <article class="stat tilt reveal"><div class="stat-n"><span class="count" data-to="26">0</span></div><p>glacial lake outburst floods recorded in Nepal since 1977, 14 starting inside Nepal</p></article>
+        <article class="stat tilt reveal"><div class="stat-n"><span class="count" data-to="6000">0</span></div><p>households at risk downstream of Tsho Rolpa alone</p></article>
+      </div>
+      <p class="sources reveal">Sources: ICIMOD 2011 study (cited in its 2019 Tsho Rolpa reassessment); ICIMOD and UNDP Nepal 2020 report; ICIMOD 2019 Tsho Rolpa expedition.</p>
+    </div>
+  </section>
+
+  <section id="monsoon" class="sec sec-copy sec-monsoon">
+    <div class="wrap narrow">
+      <p class="mono kicker reveal">June to September</p>
+      <h2 class="h2 split">Then the monsoon arrives, and every optical satellite goes blind.</h2>
+      <p class="lead reveal">Optical imagery needs a clear sky. The monsoon puts the Himalaya under cloud from June to September, in the same months the glaciers melt fastest. The lakes are still filling. Nobody can see them.</p>
+    </div>
+    <div class="wrap">
+      <div class="obs reveal" id="obs">
+        <p class="mono kicker">The observation calendar</p>
+        <h3 class="obs-title">When did anyone actually measure these lakes?</h3>
+        <p class="obs-intro" id="obs-intro"></p>
+        <div class="obs-bars" id="obs-bars" role="group" aria-label="Measurements by month"></div>
+        <div class="obs-legend mono" id="obs-legend"></div>
+        <div class="obs-card" id="obs-card" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="radar" class="sec sec-copy">
+    <div class="wrap narrow">
+      <p class="mono kicker reveal">NISAR, a NASA and ISRO radar satellite</p>
+      <h2 class="h2 split">Radar doesn't need daylight, or clear skies.</h2>
+      <p class="lead reveal">NISAR sends its own microwave pulses through cloud. Calm water bounces them away from the sensor, so a lake shows up as a dark, unmistakable shape on any date, in any weather.</p>
+      <div class="cta reveal"><button class="btn btn-solid" id="scan-btn">Scan with radar</button></div>
+    </div>
+  </section>
+
+  <section id="lakes" class="sec sec-lakes">
+    <div id="orbit-zone" aria-label="Drag to orbit the selected lake"></div>
+    <div class="wrap lakes-grid">
+      <div class="lakes-intro">
+        <p class="mono kicker reveal">Six lakes, areas to scale</p>
+        <h2 class="h2 split">Pick a lake. Drag to look around. Scrub through time.</h2>
+        <p class="hint mono" id="drag-hint">Drag the terrain to orbit</p>
+      </div>
+      <aside class="hud" id="hud" aria-live="polite">
+        <div class="hud-top">
+          <span class="mono hud-idx" id="hud-idx">01 / 06</span>
+          <button class="data-flag" id="data-flag" aria-describedby="data-tip"><i></i><span id="data-flag-text">Published data</span></button>
+        </div>
+        <p class="data-tip" id="data-tip" hidden></p>
+        <h3 class="hud-name" id="hud-name">Imja Tsho</h3>
+        <div class="hud-meta">
+          <span class="badge" id="hud-badge"><i></i><b>Low risk</b></span>
+          <span class="mono muted" id="hud-loc"></span>
+        </div>
+        <p class="basis mono" id="hud-basis"></p>
+
+        <div class="hud-tabs" role="tablist" aria-label="Lake views">
+          <button class="hud-tab active" role="tab" data-tab="trend" aria-selected="true">Growth</button>
+          <button class="hud-tab" role="tab" data-tab="radar" aria-selected="false">Radar scenes</button>
+          <button class="hud-tab" role="tab" data-tab="exposure" aria-selected="false">Downstream</button>
+        </div>
+
+        <div id="hud-panel-trend" class="hud-panel">
+          <div class="readouts">
+            <div><span class="mono lab">Area in <b id="ro-year">2026</b></span><strong class="num" id="ro-area">0.00</strong><span class="unit">km²</span></div>
+            <div><span class="mono lab" id="lab-3">3 year</span><strong class="num" id="ro-3">0%</strong></div>
+            <div><span class="mono lab" id="lab-5">5 year</span><strong class="num" id="ro-5">0%</strong></div>
+          </div>
+          <div class="chart" id="chart"></div>
+          <div class="legend mono" id="chart-legend"></div>
+          <div class="scrub">
+            <button class="play" id="play" aria-label="Play timeline"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+            <input id="year" type="range" min="2000" max="2026" step="0.05" value="2026" aria-label="Year">
+          </div>
+          <p class="ctx" id="hud-ctx"></p>
+          <p class="key mono" id="hud-key"></p>
+        </div>
+
+        <div id="hud-panel-radar" class="hud-panel" hidden>
+          <div class="radar-stage" id="radar-stage">
+            <img id="radar-img" alt="NISAR radar backscatter image of the lake" hidden>
+            <img id="radar-mask" alt="" hidden>
+            <div class="radar-empty" id="radar-empty"></div>
+          </div>
+          <div class="radar-meta mono"><span id="radar-date">No scene</span><span id="radar-area"></span></div>
+          <div class="scrub">
+            <button class="play" id="radar-play" aria-label="Play radar scenes"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+            <input id="radar-range" type="range" min="0" max="0" step="1" value="0" aria-label="Radar scene">
+          </div>
+          <label class="sw"><input type="checkbox" id="sw-outline" checked><span class="sw-track"><i></i></span><span>Water outline</span></label>
+          <p class="ctx small" id="radar-note"></p>
+        </div>
+
+        <div id="hud-panel-exposure" class="hud-panel" hidden></div>
+
+        <div class="toggles">
+          <label class="sw"><input type="checkbox" id="sw-monsoon"><span class="sw-track"><i></i></span><span>Monsoon cloud</span></label>
+          <button class="btn-link" id="sheet-btn">Lake fact sheet</button>
+        </div>
+        <p class="sense mono" id="sense"></p>
+      </aside>
+    </div>
+    <div class="chips wrap" id="chips" role="tablist" aria-label="Lakes"></div>
+  </section>
+
+  <section id="method" class="sec sec-method">
+    <div class="wrap">
+      <h2 class="h2 split">How the numbers are made</h2>
+      <p class="lead reveal">Two sensors, one plain formula. No black box, so every number traces back to a line of code.</p>
+      <div class="steps">
+        <article class="step tilt reveal">
+          <div class="art art-ndwi" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="mono">01</span><h3>Optical history</h3>
+          <p>Landsat scenes back to 2000. Water is picked out with NDWI, with the threshold chosen for each image, then counted pixel by pixel into square kilometres.</p>
+        </article>
+        <article class="step tilt reveal">
+          <div class="art art-sar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="mono">02</span><h3>Radar, in any weather</h3>
+          <p>NISAR L-band backscatter. Water scatters the pulse away, so it reads dark. Only the dark patch that contains the lake counts, because radar shadow is dark too.</p>
+        </article>
+        <article class="step tilt reveal">
+          <div class="art art-risk" aria-hidden="true"><b></b></div>
+          <span class="mono">03</span><h3>A plain risk tier</h3>
+          <p>Our tiers, from five-year growth in area: under 10% is Low, under 25% Moderate, under 40% High, above that Critical.</p>
+        </article>
+        <article class="step tilt reveal">
+          <div class="art art-val" aria-hidden="true"><i></i><i></i></div>
+          <span class="mono">04</span><h3>Checked against published areas</h3>
+          <p>Optical areas are compared with published measurements of the same lakes on the same dates. Radar is compared with optical from within 14 days.</p>
+        </article>
+      </div>
+      <div class="limits reveal">
+        <h3>What SAR Cosmos does not do</h3>
+        <ul>
+          <li>It does not forecast outbursts or flood arrival times. That needs flood modelling and the authorities who run it.</li>
+          <li>Published lake areas carry about 10% error of their own, and our areas should be read the same way.</li>
+          <li>NISAR calibrated public data only begins in June 2026, so radar covers one season so far. The long history is optical.</li>
+          <li>The terrain you fly over is generated for illustration. Lake order is real, lake spacing is not.</li>
+        </ul>
+        <p class="mono data-status" id="data-status"></p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" class="sec sec-foot">
+    <div class="wrap foot">
+      <button class="foot-logo" id="logo-btn-2" aria-label="Open the mission patch"><img src="assets/logo-256.webp" width="132" height="132" alt="SAR Cosmos mission patch"></button>
+      <div>
+        <h2 class="display sm">Watching the Himalaya from space, through the clouds.</h2>
+        <p class="lead small">SAR Cosmos is Shivam, Aarambh and Saurav, building for NASA Space Apps 2026 in Bhaktapur.</p>
+        <p class="small-print">Data: Landsat via Google Earth Engine, NISAR (NASA and ISRO) via ASF, published lake areas from Rounce et al. (2016) and ICIMOD. Built with AI coding assistance, directed and reviewed by the team.</p>
+        <p><a class="link" href="https://github.com/ShivamDual/sar-cosmos" target="_blank" rel="noopener">github.com/ShivamDual/sar-cosmos</a></p>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<aside class="chat" id="chat" role="dialog" aria-label="Cosmo, the SAR Cosmos assistant" hidden>
+  <header class="chat-head">
+    <div id="chat-av"></div>
+    <div class="chat-title"><strong>Cosmo</strong><span class="chat-sub"><i class="dot offline" id="chat-dot"></i><span id="chat-status">Page-data mode</span></span></div>
+    <div class="chat-tools"><button id="chat-deep" type="button" aria-label="Deep offline model">Deep: off</button><button id="chat-new" type="button" aria-label="New chat">New chat</button><button id="chat-close" type="button" aria-label="Close">Close</button></div>
+  </header>
+  <div class="chat-scroll" id="chat-scroll">
+    <div class="chat-welcome" id="chat-welcome">
+      <div class="cosmo-stage"><div id="cosmo-big"></div></div>
+      <h3>Hi, I'm Cosmo.</h3>
+      <p>Ask me anything about SAR Cosmos, the six lakes, radar, or glacial floods. I can also pull up fact sheets, data downloads and the source papers.</p>
+      <div class="chat-suggest" id="chat-suggest"></div>
+    </div>
+    <div class="chat-msgs" id="chat-msgs" aria-live="polite"></div>
+  </div>
+  <form class="chat-form" id="chat-form" autocomplete="off">
+    <textarea id="chat-input" rows="1" maxlength="1500" placeholder="Message Cosmo" aria-label="Message Cosmo"></textarea>
+    <button type="submit" id="chat-send" aria-label="Send"><svg class="i-send" viewBox="0 0 24 24" width="18" height="18"><path d="M3.4 20.4 21 12 3.4 3.6 3.3 10l12 2-12 2z" fill="currentColor"/></svg><svg class="i-stop" viewBox="0 0 24 24" width="16" height="16"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></svg></button>
+  </form>
+  <p class="chat-foot mono">AI can make mistakes. Check facts against the sources. Not for emergency decisions.</p>
+</aside>
+
+<div class="sheet-modal" id="sheet-modal" hidden>
+  <div class="sheet-bar"><span class="mono">Lake fact sheet</span><span><button id="sheet-print">Print or save as PDF</button><button id="sheet-close">Close</button></span></div>
+  <article class="sheet" id="sheet"></article>
+</div>
+
+<div id="lightbox" hidden>
+  <button class="lb-close" aria-label="Close">Close</button>
+  <div class="lb-stage"><img src="assets/logo-640.webp" alt="SAR Cosmos mission patch" width="520" height="520"></div>
+</div>
+
+<noscript><p style="position:fixed;bottom:1rem;left:1rem;color:#fff">SAR Cosmos needs JavaScript and WebGL to draw the 3D range.</p></noscript>
+
+<script src="vendor/three.min.js"></script>
+<script src="data.js"></script>
+<script src="radar/manifest.js"></script>
+<script src="js/noise.js"></script>
+<script src="js/terrain.js"></script>
+<script src="js/world.js"></script>
+<script src="js/qa.js"></script>
+<script src="js/knowledge.js"></script>
+<script src="js/brain-data.js"></script>
+<script src="js/brain.js"></script>
+<script src="js/brain-write.js"></script>
+<script src="js/chatlib.js"></script>
+<script src="js/chat-config.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
