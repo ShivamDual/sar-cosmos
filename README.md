@@ -10,11 +10,15 @@
 <p align="center"><em>Watching Nepal's glacial lakes from orbit, through the monsoon.</em></p>
 
 <p align="center">
+  <a href="https://shivamdual.github.io/sar-cosmos/"><strong>🌐 Live Interactive 3D Platform: shivamdual.github.io/sar-cosmos</strong></a>
+</p>
+
+<p align="center">
   <img alt="challenge" src="https://img.shields.io/badge/NASA%20Space%20Apps-2026-0b3d91?style=flat-square">
   <img alt="challenge name" src="https://img.shields.io/badge/challenge-Dancing%20with%20the%20SARs-4fe3d0?style=flat-square">
   <img alt="data" src="https://img.shields.io/badge/data-NISAR%20%C2%B7%20Landsat%20%C2%B7%20ICIMOD-ffb94d?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.11%2B-3776ab?style=flat-square">
-  <img alt="tests" src="https://img.shields.io/badge/tests-39%20passing-2ea043?style=flat-square">
+  <img alt="tests" src="https://img.shields.io/badge/tests-41%20Python%20%7C%2084%20JS%20passing-2ea043?style=flat-square">
 </p>
 
 ---
@@ -122,7 +126,7 @@ sar-cosmos/
 
 ## Team
 
-**Shivam**, **Aarambh** and **Saurav**. Bhaktapur local event, NASA Space Apps Challenge 2026.
+**Shivam Prasad Raut** (Lead), **Aarambha Ghimire**, and **Saurav Bhattrai**. Khwopa Engineering College, Bhaktapur Local Event, NASA Space Apps Challenge 2026.
 
 ## Use of AI
 
